@@ -1,6 +1,8 @@
 // Function get publick and digital key pairs
 export const fetchKeyPairs = async () => {
-  const res = await fetch("http://localhost:5000/users/keyGeneration");
+  const res = await fetch(
+    "https://upi-banking-backend-api.vercel.app/users/keyGeneration"
+  );
   const resData = await res.json();
 
   if (!res.ok) {
@@ -11,13 +13,16 @@ export const fetchKeyPairs = async () => {
 };
 
 export const startRegister = async (data) => {
-  const res = await fetch("http://localhost:5000/users/register", {
-    method: "PUT",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+  const res = await fetch(
+    "https://upi-banking-backend-api.vercel.app/users/register",
+    {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
   const resData = await res.json();
 
   if (!res.ok || res.status !== 250) {
@@ -27,13 +32,16 @@ export const startRegister = async (data) => {
 };
 
 export const verifySign = async (data) => {
-  const res = await fetch("http://localhost:5000/users/verify", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+  const res = await fetch(
+    "https://upi-banking-backend-api.vercel.app/users/verify",
+    {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
   const resData = await res.json();
 
   if (!res.ok) {
@@ -45,13 +53,16 @@ export const verifySign = async (data) => {
 };
 
 export const verifyEmail = async (data) => {
-  const res = await fetch("http://localhost:5000/users/verifyotp", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+  const res = await fetch(
+    "https://upi-banking-backend-api.vercel.app/users/verifyotp",
+    {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
   const resData = await res.json();
 
   if (res.status !== 200) {
@@ -62,13 +73,16 @@ export const verifyEmail = async (data) => {
 };
 
 export const login = async (data) => {
-  const res = await fetch("http://localhost:5000/users/login", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+  const res = await fetch(
+    "https://upi-banking-backend-api.vercel.app/users/login",
+    {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
 
   const resData = await res.json();
 
@@ -89,13 +103,16 @@ export const completeProfile = async (data, authHeader) => {
   formData.append("upipin", data.upipin);
   formData.append("image", data.image);
 
-  const res = await fetch("http://localhost:5000/users/completeProfile", {
-    method: "POST",
-    headers: {
-      Authorization: authHeader,
-    },
-    body: formData,
-  });
+  const res = await fetch(
+    "https://upi-banking-backend-api.vercel.app/users/completeProfile",
+    {
+      method: "POST",
+      headers: {
+        Authorization: authHeader,
+      },
+      body: formData,
+    }
+  );
 
   const resData = await res.json();
 
@@ -109,10 +126,14 @@ export const completeProfile = async (data, authHeader) => {
 export const fetchUser = async (userId, authHeader, email) => {
   let url;
   if (userId === null) {
-    url = "http://localhost:5000/users/getProfileDetailsUsingEmail/" + email;
+    url =
+      "https://upi-banking-backend-api.vercel.app/users/getProfileDetailsUsingEmail/" +
+      email;
   }
   if (email === null) {
-    url = "http://localhost:5000/users/getProfileDetails/" + userId;
+    url =
+      "https://upi-banking-backend-api.vercel.app/users/getProfileDetails/" +
+      userId;
   }
 
   const res = await fetch(url, {

@@ -42,8 +42,9 @@ export default function LogIn({ loginHandler }) {
             resData.user.address === null ||
             resData.user.dob === null ||
             resData.user.bank === null ||
-            resData.user.upipin === null ||
-            resData.user.image === null
+            resData.user.upipin === null
+            // ||
+            // resData.user.image === null
           ) {
             navigate("/user/editprofile");
           } else {

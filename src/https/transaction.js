@@ -1,6 +1,6 @@
 export const genreateSignature = async (data, authHeader) => {
   const res = await fetch(
-    "http://localhost:5000/transaction/generateSignature",
+    "https://upi-banking-backend-api.vercel.app/transaction/generateSignature",
     {
       method: "POST",
       headers: {
@@ -23,11 +23,13 @@ export const genreateSignature = async (data, authHeader) => {
 export const makeTransaction = async (data, authHeader) => {
   let url;
   if (data.acNo) {
-    url = "http://localhost:5000/transaction/makeTranscationUsingAccNo";
+    url =
+      "https://upi-banking-backend-api.vercel.app/transaction/makeTranscationUsingAccNo";
   }
 
   if (data.phone) {
-    url = "http://localhost:5000/transaction/makeTranscationUsingPhoneNo";
+    url =
+      "https://upi-banking-backend-api.vercel.app/transaction/makeTranscationUsingPhoneNo";
   }
 
   const res = await fetch(url, {
@@ -51,13 +53,15 @@ export const makeTransaction = async (data, authHeader) => {
 export const getTransaction = async (userId, authHeader, type) => {
   let url;
   if (type === "sent") {
-    url = "http://localhost:5000/transaction/getHistorySent/";
+    url =
+      "https://upi-banking-backend-api.vercel.app/transaction/getHistorySent/";
   }
 
-  if(type === "receive"){
-    url = "http://localhost:5000/transaction/getHistoryReceive/"
+  if (type === "receive") {
+    url =
+      "https://upi-banking-backend-api.vercel.app/transaction/getHistoryReceive/";
   }
-  
+
   const res = await fetch(url + userId, {
     method: "GET",
     headers: {

@@ -22,7 +22,7 @@ export default function Users() {
       setUserData(data.users);
 
       const imageUrls = data.users.map((user) => {
-        return `http://localhost:5000/${user.image}`;
+        return `https://upi-banking-backend-api.vercel.app/${user.image}`;
       });
 
       setImageUrl(imageUrls);

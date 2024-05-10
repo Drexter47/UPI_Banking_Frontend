@@ -20,7 +20,9 @@ const UserProfile = () => {
     fetchUser(auth.userId, authHeader, null)
       .then((resData) => {
         setUserDetails(resData.user);
-        setImageUrl("http://localhost:5000/" + resData.user.image);
+        setImageUrl(
+          "https://upi-banking-backend-api.vercel.app/" + resData.user.image
+        );
         setDOB(resData.user.dob.split("T")[0]);
       })
       .catch((err) => {
@@ -98,11 +100,11 @@ const UserProfile = () => {
     <>
       <div className="rounded-xl max-w-sm mx-auto  overflow-hidden shadow-xl">
         <div className="text-center p-10 align-middle my-4 rounded-xl">
-          <img
+          {/* <img
             className="h-52 w-52 m-auto  rounded-[50%] object-cover object-center"
-            src={imageUrl}
+            src={ProfilePic}
             alt="Profile Pic"
-          />
+          /> */}
 
           <h3 className="font-serif uppercase mt-3 font-bold text-2xl text-gray-800 dark:text-white mb-1">
             {userDetails.name}

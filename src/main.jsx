@@ -6,7 +6,7 @@ import AuthProvider from "react-auth-kit/AuthProvider";
 import createStore from "react-auth-kit/createStore";
 import { BrowserRouter } from "react-router-dom";
 
-export const server = "http://localhost:5000";
+export const server = "https://upi-banking-backend-api.vercel.app/";
 
 export const Context = createContext({ isAuthenticated: false });
 

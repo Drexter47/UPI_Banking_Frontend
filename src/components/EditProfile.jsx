@@ -24,7 +24,7 @@ export default function EditProfile() {
       dob: data.dob,
       bank: data.bank,
       upipin: data.upipin,
-      image: data.image,
+      // image: data.image,
     };
 
     completeProfile(finalData, authHeader)
@@ -47,7 +47,7 @@ export default function EditProfile() {
               Complete Profile{" "}
             </h1>
 
-            <label className="text-white font-thin bg-[#222831]">
+            {/* <label className="text-white font-thin bg-[#222831]">
               Profile Photo
             </label>
             <input
@@ -55,7 +55,7 @@ export default function EditProfile() {
               name="image"
               required
               className="border p-2 w-full mb-2 bg-[#222831] text-[#EEEEEE]"
-            />
+            /> */}
             <input
               type="text"
               name="name"
