@@ -181,7 +181,7 @@ function SignUp({ keyPairs }) {
             <div className="mb-4 w-[100%] bg-[#222831] ">
               <form onSubmit={submitHandlerOtp} className="bg-[#222831]">
                 <div className="bg-[#222831]">
-                  <button
+                  {/* <button
                     onClick={(e) => {
                       e.preventDefault();
                       setShowOptVer(false);
@@ -202,7 +202,8 @@ function SignUp({ keyPairs }) {
                         />
                       </svg>
                     </span>
-                  </button>
+                  </button> */}
+
                   <span className="text-xl ml-8 relative top-[-0.5rem] font-semibold mb-2 text-center text-[#EEEEEE] bg-[#222831]">
                     Email OTP Verification
                   </span>
@@ -217,7 +218,7 @@ function SignUp({ keyPairs }) {
                     Otp Send to this {email}
                   </span>
 
-                  <div className=" bg-[#222831] text-[#EEEEEE]">
+                  {/* <div className=" bg-[#222831] text-[#EEEEEE]">
                     <br />
                     <span className="bg-[#222831] text-[#EEEEEE]">
                       Trouble to get otp? we can{" "}
@@ -225,7 +226,7 @@ function SignUp({ keyPairs }) {
                     <button className="bg-[#222831] text-[#EEEEEE] hover:text-[#00ADB5]">
                       Resend
                     </button>
-                  </div>
+                  </div> */}
                 </div>
                 {/* Submit Button  */}
                 <button

@@ -13,7 +13,10 @@ function USerHomePage() {
   const auth = useAuthUser();
   const authHeader = useAuthHeader();
 
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({
+    _id: "Loading...",
+    upiId: "Loading...",
+  });
 
   const [showBalance, setShowBalance] = useState(false);
 

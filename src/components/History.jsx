@@ -7,12 +7,13 @@ import {
 } from "@material-tailwind/react";
 import { PiArrowSquareDownRightLight } from "react-icons/pi";
 import { PiArrowSquareUpRightLight } from "react-icons/pi";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { NotificationDialog } from "./Dilog";
 import { getTransaction } from "../https/transaction";
 import useAuthHeader from "react-auth-kit/hooks/useAuthHeader";
 import useAuthUser from "react-auth-kit/hooks/useAuthUser";
 import { fetchUser } from "../https/auth";
+import Loader from "./Loader";
 
 export default function History() {
   const auth = useAuthUser();
@@ -30,8 +31,10 @@ export default function History() {
 
   const [sentMoney, setSentMoney] = useState([]);
   const [receivedMoney, setReceivedMoney] = useState([]);
+  const [fallBackText, setfallBackText] = useState(undefined);
 
   useEffect(() => {
+    setfallBackText(<Loader size={"small"} />);
     async function fetchTransactions() {
       const transcations = await getTransaction(
         auth.userId,
@@ -39,6 +42,9 @@ export default function History() {
         "sent"
       );
       setSentMoney(transcations.transcations);
+      if (transcations.transcations.length === 0) {
+        setfallBackText("You did not sent money yet!");
+      }
     }
     fetchTransactions();
 
@@ -101,7 +107,7 @@ export default function History() {
 
   const showSentHistory =
     sentMoney.length === 0
-      ? "You did not sent money yet!"
+      ? fallBackText
       : sentMoney.map((sentTranscation) => {
           return (
             <Card
@@ -174,9 +180,11 @@ export default function History() {
       </Button>
 
       {/* History */}
-      <div className="flex justify-center items-center gap-36 flex-wrap mt-10 mr-14">
-        {activeTab === "receive" ? showReceivedHistory : showSentHistory}
-      </div>
+      <Suspense fallback={<Loader />}>
+        <div className="flex justify-center items-center gap-36 flex-wrap mt-10 mr-14">
+          {activeTab === "receive" ? showReceivedHistory : showSentHistory}
+        </div>
+      </Suspense>
     </div>
   );
 }

@@ -12,9 +12,17 @@ const UserProfile = () => {
   const auth = useAuthUser();
   const authHeader = useAuthHeader();
 
-  const [userDetails, setUserDetails] = useState("");
+  const [userDetails, setUserDetails] = useState({
+    name: "Loading....",
+    bank: "Loading....",
+    _id: "Loading....",
+    upiId: "Loading....",
+    email: "Loading....",
+    phone: "Loading....",
+    address: "Loading....",
+  });
   const [imageUrl, setImageUrl] = useState("");
-  const [DOB, setDOB] = useState("");
+  const [DOB, setDOB] = useState("Loading....");
 
   useEffect(() => {
     fetchUser(auth.userId, authHeader, null)
