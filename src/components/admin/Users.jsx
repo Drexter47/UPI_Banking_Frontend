@@ -58,12 +58,12 @@ export default function Users() {
 
   const data = React.useMemo(() => {
     return userData.map((user, index) => ({
-      photo: <img src={imageUrl[index]} className="h-24 w-24 object-cover" />,
       name: user.name,
       bank: user.bank,
       wallet: user.wallet,
       account: user._id,
       mobile: user.phone,
+      upiid: user.upiId,
       email: user.email,
       dob: user.dob,
       transaction: (
@@ -88,15 +88,12 @@ export default function Users() {
     () => [
       { Header: "Sr no.", accessor: (row, index) => index + 1 },
 
-      {
-        Header: "Photo",
-        accessor: "photo",
-      },
       { Header: "Name", accessor: "name" },
       { Header: "Bank", accessor: "bank" },
       { Header: "Wallet", accessor: "wallet" },
       { Header: "Account Number", accessor: "account" },
       { Header: "Mobile Number", accessor: "mobile" },
+      { Header: "UPI ID", accessor: "upiid" },
       { Header: "Email", accessor: "email" },
       { Header: "DOB", accessor: "dob" },
       { Header: "Address", accessor: "address" },
